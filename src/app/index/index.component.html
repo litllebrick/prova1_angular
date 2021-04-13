@@ -1,0 +1,18 @@
+<h1>Meu dicionário de Inglês</h1>
+
+<form [formGroup]="formulario">
+    <label for="palavra">Palavra:</label>
+    <input type="text" formControlName="palavra" id="palavra" (keyup)="testaPalavra($event.target.value)"><br>
+    <p *ngIf="palavraCadastrada">Já existe essa palavra cadastrada!</p>
+    <div *ngIf="f.palavra.errors?.required">Campo Obrigatório</div>
+
+    <label for="palavra">Significado:</label>
+    <input type="text" formControlName="significado" id="significado"><br>
+    <div *ngIf="f.significado.errors?.required">Campo Obrigatório</div>
+    <button type="submit" (click)="save()">Salvar</button>
+</form>
+
+<div *ngFor="let item of vetorPalavras" class="card">
+    <p>Palavra: {{item.palavra}}</p>
+    <p>Significado: {{item.significado}}</p>
+</div>
